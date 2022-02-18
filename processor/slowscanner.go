@@ -8,7 +8,9 @@ import (
 	"github.com/ussmith/cs/data"
 )
 
-type SlowScanner struct{}
+type SlowScanner struct {
+	Name string
+}
 
 func (fs SlowScanner) Scan(ctx context.Context, location string, results chan<- data.ScanStatus) {
 	process := true

@@ -7,7 +7,9 @@ import (
 	"github.com/ussmith/cs/data"
 )
 
-type MediumScanner struct{}
+type MediumScanner struct {
+	Name string
+}
 
 func (fs MediumScanner) Scan(ctx context.Context, location string, results chan<- data.ScanStatus) {
 	//fmt.Println("Starting a medium scanner")
@@ -19,7 +21,7 @@ func (fs MediumScanner) Scan(ctx context.Context, location string, results chan<
 	foundVals = append(foundVals, "v2")
 	foundVals = append(foundVals, "v3")
 	r := data.ScanStatus{
-		ScannerName: "MediumScanner",
+		ScannerName: fs.Name,
 		Found:       true,
 		Viruses:     foundVals,
 		Err:         nil,

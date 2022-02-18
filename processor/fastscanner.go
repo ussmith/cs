@@ -7,7 +7,9 @@ import (
 	"github.com/ussmith/cs/data"
 )
 
-type FastScanner struct{}
+type FastScanner struct {
+	Name string
+}
 
 func (fs FastScanner) Scan(ctx context.Context, location string, results chan<- data.ScanStatus) {
 	//fmt.Println("Starting a fast scanner")
@@ -15,7 +17,7 @@ func (fs FastScanner) Scan(ctx context.Context, location string, results chan<- 
 	<-c
 
 	r := data.ScanStatus{
-		ScannerName: "FastScanner",
+		ScannerName: fs.Name,
 		Found:       false,
 		Err:         nil,
 	}
